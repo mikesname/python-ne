@@ -1,0 +1,66 @@
+{% load i18n %}
+
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block head_title_base %}{% if SITE_NAME %}{{ SITE_NAME }} : {% endif %}{% block head_title %}{% endblock %}{% endblock %}</title>
+        <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
+        <script src="{{ STATIC_URL }}js/jquery-1.7.min.js"></script>
+        <script src="{{ STATIC_URL }}js/bootstrap-alerts.js"></script>
+        <script src="{{ STATIC_URL }}js/bootstrap-tabs.js"></script>
+        <script src="{{ STATIC_URL }}js/bootstrap-dropdown.js"></script>
+        <script src="{{ STATIC_URL }}js/theme.js"></script>
+        {% block extra_head_base %}
+            {% block extra_head %}{% endblock %}
+        {% endblock %}
+    </head>
+    <body class="{% block body_class %}{% endblock %}" id="{% block body_id %}{% endblock %}">
+        
+        {% block topbar_base %}
+            <div class="navbar topbar">
+                <div class="navbar-inner">
+                    <div class="container">
+                        {% block topbar %}
+                            <h3><a class="brand" href="{% url home %}">NE</a></h3>
+                            {% block nav %}
+                                <ul class="nav">
+                                    {% spaceless %}
+                                    <li id="tab_home"><a href="{% url home %}">Home</a></li>
+                                    {% endspaceless %}
+                                </ul>
+                            {% endblock %}
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+        
+        {% block body_base %}
+            <div class="container">
+                {% block body %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+        
+        {% block footer_base %}
+            <div id="footer">
+                <div class="inner">
+                    <div class="container">
+                        {% block footer %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+        
+        {% block extra_body_base %}
+            {% block extra_body %}{% endblock %}
+        {% endblock %}
+    </body>
+</html>
+

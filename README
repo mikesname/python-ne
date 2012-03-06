@@ -1,0 +1,3 @@
+Noddy webservice for named-entity extraction using OpenNLP
+Java stuff.  Basically a hack to avoid the complexities
+of NLTK for the moment.
